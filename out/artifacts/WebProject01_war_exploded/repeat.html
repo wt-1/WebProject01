@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/repeat.css">
+    <title>错题</title>
+</head>
+<div class="content">
+<body>
+<div class="table" id="app">
+    <table style="align-content: center">
+        <div class="table_head">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>题目</th>
+            <th>答案</th>
+            <th>判断结果</th>
+        </tr>
+        </thead>
+        </div>
+        <div class="table_body">
+        <tbody>
+        <tr v-for="(q,index) in questions">
+            <td>{{index+1}}</td>
+            <td>{{q.topic}}</td>
+            <td><input type="text" id="res" name="res" v-model="q.res">
+                <div class="ans">
+                    <span style="color: red;" v-show="isf &&!q.flag">正确答案为：{{q.ans}}</span>
+                </div>
+            </td>
+            <td>
+                <div v-if="isf">
+                    <span style="color: red" v-show="!q.flag">×</span>
+                    <span style="color: blue;" v-show="q.flag">√</span>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+        </div>
+    </table>
+    <div class="but" >
+        <input class="a" type="button" value="返回" onclick="window.location.href='main.html'">
+        <input class="c" type="button" v-show="isf" value="继续下一轮" onClick="window.location.reload('repeat.html');">
+        <button class="b" v-show="!isf" @click="judge">提交</button>
+    </div>
+</div>
+<script src="js/vuejs-2.5.16.js"></script>
+<script src="js/axios-0.18.0.js"></script>
+<script src="js/repeat.js"></script>
+</body>
+</div>
+</html>
