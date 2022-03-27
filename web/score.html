@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>成绩</title>
+</head>
+<body>
+<div class="table" id="app">
+<table>
+    <div class="table_head">
+    <thead>
+    <th>序号</th>
+    <th>成绩</th>
+    <th>时间</th>
+    </thead>
+    </div>
+    <div class="table_body">
+    <tbody>
+    <tr v-for="(s,index) in sorces">
+        <td>{{index+1}}</td>
+        <td>{{s.grade}}</td>
+        <td>{{s.date}}</td>
+    </tr>
+    </tbody>
+        </div>
+</table>
+</div>
+<script src="js/vuejs-2.5.16.js"></script>
+<script src="js/axios-0.18.0.js"></script>
+<script src="js/score.js"></script>
+</body>
+</html>

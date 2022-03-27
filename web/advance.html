@@ -1,0 +1,61 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <title>高阶练习</title>
+</head>
+<body>
+<div class="content" id="app">
+    <div class="date">
+        <p>计时：{{hours}}:{{minutes}}:{{seconds}}</p>
+    </div>
+    <div v-if="isf">
+        分数：{{grade}}
+    </div>
+    <div class="table">
+    <table style="align-content: center" class="table-hover">
+        <div class="table_head">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>题目</th>
+            <th>答案</th>
+            <th>判断结果</th>
+        </tr>
+        </thead>
+        </div>
+        <div class="table_body">
+        <tbody>
+        <tr v-for="(t,index) in topics">
+            <td>{{index+1}}</td>
+            <td>{{t.topic}}</td>
+            <td><input type="text" id="res" name="res" v-model="t.res" >
+                <div class="ans">
+                    <span style="color: red;" v-show="isf &&!t.flag">正确答案为：{{t.ans}}</span>
+                </div>
+            </td>
+            <td>
+                <div v-if="isf">
+                    <span style="color: red" v-show="!t.flag">×</span>
+                    <span style="color: blue;" v-show="t.flag">√</span>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+        </div>
+    </table>
+    </div>
+    <div class="but">
+        <input class="a" type="button" value="返回" onclick="window.location.href='main.html'">
+        <input class="c" type="button" v-show="isf" value="再做一遍" onClick="window.location.reload('advance.html');">
+        <button class="b" v-show="!isf" @click="judge">提交</button>
+    </div>
+</div>
+<script type="text/javascript">
+    var time;
+</script>
+<script src="js/vuejs-2.5.16.js"></script>
+<script src="js/axios-0.18.0.js"></script>
+<script src="js/advance.js"></script>
+</body>
+</html>
